@@ -25,55 +25,55 @@ const MongoClient = mongodb.MongoClient;
 // });
 
 
-MongoClient.connect('mongodb://localhost:27017/Chat_App', (err, Database) => {
-    if(err) {
-        console.log(err);
-        return false;
-    }
-    console.log("Connected to MongoDB");
-    const db = Database.db("Chat_App");
-    users = db.collection("users");
-    chatRooms = db.collection("chatRooms");
-    const server = app.listen(port, () => {
-        console.log("Server started on port " + port + "...");
-    });
-    const io = socket.listen(server);
+// MongoClient.connect('mongodb://localhost:27017/Chat_App', (err, Database) => {
+//     if(err) {
+//         console.log(err);
+//         return false;
+//     }
+//     console.log("Connected to MongoDB");
+//     const db = Database.db("Chat_App");
+//     users = db.collection("users");
+//     chatRooms = db.collection("chatRooms");
+//     const server = app.listen(port, () => {
+//         console.log("Server started on port " + port + "...");
+//     });
+//     const io = socket.listen(server);
 
-    io.sockets.on('connection', (socket) => {
-        socket.on('join', (data) => {
-            socket.join(data.room);
-            chatRooms.find({}).toArray((err, rooms) => {
-                if(err){
-                    console.log(err);
-                    return false;
-                }
-                count = 0;
-                rooms.forEach((room) => {
-                    if(room.name == data.room){
-                        count++;
-                    }
-                });
-                if(count == 0) {
-                    chatRooms.insert({ name: data.room, messages: [] }); 
-                }
-            });
-        });
-        socket.on('message', (data) => {
-            io.in(data.room).emit('new message', {user: data.user, message: data.message});
-            chatRooms.update({name: data.room}, { $push: { messages: { user: data.user, message: data.message } } }, (err, res) => {
-                if(err) {
-                    console.log(err);
-                    return false;
-                }
-                console.log("Document updated");
-            });
-        });
-        socket.on('typing', (data) => {
-            socket.broadcast.in(data.room).emit('typing', {data: data, isTyping: true});
-        });
-    });
+//     io.sockets.on('connection', (socket) => {
+//         socket.on('join', (data) => {
+//             socket.join(data.room);
+//             chatRooms.find({}).toArray((err, rooms) => {
+//                 if(err){
+//                     console.log(err);
+//                     return false;
+//                 }
+//                 count = 0;
+//                 rooms.forEach((room) => {
+//                     if(room.name == data.room){
+//                         count++;
+//                     }
+//                 });
+//                 if(count == 0) {
+//                     chatRooms.insert({ name: data.room, messages: [] }); 
+//                 }
+//             });
+//         });
+//         socket.on('message', (data) => {
+//             io.in(data.room).emit('new message', {user: data.user, message: data.message});
+//             chatRooms.update({name: data.room}, { $push: { messages: { user: data.user, message: data.message } } }, (err, res) => {
+//                 if(err) {
+//                     console.log(err);
+//                     return false;
+//                 }
+//                 console.log("Document updated");
+//             });
+//         });
+//         socket.on('typing', (data) => {
+//             socket.broadcast.in(data.room).emit('typing', {data: data, isTyping: true});
+//         });
+//     });
 
-}); 
+// }); 
 
 app.get('/', (req, res, next) => {
     res.send('Welcome to the express server...');
@@ -155,4 +155,7 @@ app.get('/chatroom/:room', (req, res, next) => {
         }
         res.json(chatroom.messages);
     });
+});
+const server = app.listen(port, () => {
+    console.log("Server started on port " + port + "...");
 });
