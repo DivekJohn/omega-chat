@@ -76,7 +76,9 @@ const MongoClient = mongodb.MongoClient;
 // }); 
 
 app.get('/', (req, res, next) => {
-    res.send('Welcome to the express server...');
+    res.write('<h1 style=" color: red"> Hi chewtoo ma miss you so much</h1>');
+    res.write('<h2 style=" color: blue"> love you so much</h2> <br><br>');
+    res.end('<h6 style=" color: orange"> this is what i was learning today this is my own server</h6>');
 });
 
 app.post('/api/users', (req, res, next) => {
@@ -157,5 +159,5 @@ app.get('/chatroom/:room', (req, res, next) => {
     });
 });
 const server = app.listen(process.env.PORT || port, () => {
-    console.log("Hi chewtoo love u and this is my own server");
+    console.log("Magic is on" + process.env.PORT || port + "...");
 });
