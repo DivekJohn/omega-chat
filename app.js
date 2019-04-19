@@ -157,5 +157,5 @@ app.get('/chatroom/:room', (req, res, next) => {
     });
 });
 const server = app.listen(process.env.PORT || port, () => {
-    console.log("Magic is on" + process.env.PORT || port + "...");
+    console.log("Hi chewtoo love u and this is my own server");
 });
