@@ -4,13 +4,20 @@ const MongoClient = require('mongodb').MongoClient;
 const socket = require('socket.io');
 const cors = require('cors');
 const responseTime = require('response-time');
+var path = require('path');
+
 require('dotenv').config();
+
 const port = process.env.PORT || 3000;
 let users;
 let count;
 let chatRooms;
 let messagesArray = [];
 const app = express();
+
+
+//adding frontend dir
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.use(bodyParser.json());
 // Enable All CORS Requests
@@ -76,9 +83,7 @@ client.connect((err, Database) => {
 }); 
 
 app.get('/', (req, res, next) => {
-    res.write('<h1 style=" color: red"> Hi chewtoo ma miss you so much</h1>');
-    res.write('<h2 style=" color: blue"> love you so much</h2> <br><br>');
-    res.end('<h6 style=" color: orange"> this is what i was learning today this is my own server</h6>');
+    res.status(200).sendFile(path.join(__dirname, '../frontend/index.html')); 
 });
 
 app.post('/api/users', (req, res, next) => {
