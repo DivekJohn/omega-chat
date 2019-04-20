@@ -1,6 +1,10 @@
 # omegaChat
 simple socket io chat application
 
-#deploy in heroku
+# Logs
 ```bash
-  heroku create
+   heroku logs --tail
+```
+# Add latest code 
+     git push heroku develop:master
+    
