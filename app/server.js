@@ -148,23 +148,24 @@ app.get('/api/users', (req, res, next) => {
     });
 });
 
-app.get('/chatroom/:room', (req, res, next) => {
-    let room = req.params.room;
-    chatRooms.find({name: room}).toArray((err, chatroom) => {
+app.get('/chatroom/:name', (req, res, next) => {
+    let name = req.params.name;
+    chatRooms.findOne({name},(err, chatroom) => {
         if(err) {
             console.log(err);
             return false;
         }
+        console.log(chatroom);
         res.json(chatroom.messages);
     });
 });
 
-app.use('/*', function (req, res) {
+app.get((req, res) => {
     res.status(200).sendFile(path.join(__dirname, '../frontend/index.html')); 
 
  });
  
- app.use(function(req, res) { //put this at end
+ app.use((req, res) => { //put this at end
      res.status(404);//add this line for setting 404 status
-     res.render('404', {layout: false, title: '404: File Not Found'});
+     res.render('404', {error: true, title: '404: File Not Found'});
  });
