@@ -44,7 +44,7 @@ client.connect((err, Database) => {
     users = db.collection("users");
     chatRooms = db.collection("chatRooms");
     const server = app.listen(port, () => {
-        console.log("We are live on port " + port + "...");
+        console.log("We  are live on port " + port + "...");
     });
     const io = socket.listen(server);
 
