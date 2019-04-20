@@ -165,5 +165,5 @@ app.get((req, res) => {
  });
  
  app.use((req, res) => { //put this at end
-     res.status(404).send('404', {error: true, title: '404: File Not Found'});
+    res.status(404).sendFile(path.join(__dirname, '../frontend/error.html')); 
  });
