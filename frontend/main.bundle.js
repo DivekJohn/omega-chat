@@ -134,12 +134,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__profile_profile_component__ = __webpack_require__("./src/app/profile/profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__chatroom_chatroom_component__ = __webpack_require__("./src/app/chatroom/chatroom.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__error_error_component__ = __webpack_require__("./src/app/error/error.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -168,7 +170,7 @@ var routes = [
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_17__profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_1__Auth_guard__["a" /* AuthGuard */]] },
     { path: 'chat', component: __WEBPACK_IMPORTED_MODULE_18__chat_chat_component__["a" /* ChatComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_1__Auth_guard__["a" /* AuthGuard */]] },
     { path: 'chatroom', component: __WEBPACK_IMPORTED_MODULE_19__chatroom_chatroom_component__["a" /* ChatroomComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_1__Auth_guard__["a" /* AuthGuard */]] },
-    { path: '**', redirectTo: '' }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_20__error_error_component__["a" /* ErrorComponent */] }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -185,7 +187,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_16__home_home_component__["a" /* HomeComponent */],
             __WEBPACK_IMPORTED_MODULE_17__profile_profile_component__["a" /* ProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_18__chat_chat_component__["a" /* ChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__chatroom_chatroom_component__["a" /* ChatroomComponent */]
+            __WEBPACK_IMPORTED_MODULE_19__chatroom_chatroom_component__["a" /* ChatroomComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__error_error_component__["a" /* ErrorComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -362,6 +365,59 @@ ChatroomComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=chatroom.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/error/error.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/error/error.component.html":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/error/error.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ErrorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ErrorComponent = (function () {
+    function ErrorComponent() {
+    }
+    ErrorComponent.prototype.ngOnInit = function () {
+        window.location.href = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].apiUrl + "/error";
+    };
+    return ErrorComponent;
+}());
+ErrorComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-error',
+        template: __webpack_require__("./src/app/error/error.component.html"),
+        styles: [__webpack_require__("./src/app/error/error.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], ErrorComponent);
+
+//# sourceMappingURL=error.component.js.map
 
 /***/ }),
 
@@ -827,7 +883,6 @@ var WebsocketService = (function () {
         this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl);
     }
     WebsocketService.prototype.joinRoom = function (data) {
-        console.log(data);
         this.socket.emit('join', data);
     };
     WebsocketService.prototype.sendMessage = function (data) {

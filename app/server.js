@@ -18,6 +18,8 @@ const app = express();
 
 //adding frontend dir
 app.use(express.static(path.join(__dirname, '../frontend')));
+//pulic dir
+app.use(express.static(path.join(__dirname, '../public/html')));
 
 app.use(bodyParser.json());
 // Enable All CORS Requests
@@ -165,5 +167,5 @@ app.get((req, res) => {
  });
  
  app.use((req, res) => { //put this at end
-    res.status(404).sendFile(path.join(__dirname, '../frontend/error.html')); 
+    res.status(404).sendFile(path.join(__dirname, '../public/html/error.html')); 
  });
