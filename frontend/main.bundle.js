@@ -882,7 +882,7 @@ WebsocketService = __decorate([
 // The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false,
-    apiUrl: 'http://localhost:4000',
+    apiUrl: 'https://divek.herokuapp.com',
     debugMode: false
 };
 //# sourceMappingURL=environment.js.map
