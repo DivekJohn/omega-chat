@@ -81,11 +81,6 @@ client.connect((err, Database) => {
     });
 
 }); 
-
-app.get('/', (req, res, next) => {
-    res.status(200).sendFile(path.join(__dirname, '../frontend/index.html')); 
-});
-
 app.post('/api/users', (req, res, next) => {
     let user = {
         username: req.body.username,
@@ -163,3 +158,13 @@ app.get('/chatroom/:room', (req, res, next) => {
         res.json(chatroom.messages);
     });
 });
+
+app.use('/*', function (req, res) {
+    res.status(200).sendFile(path.join(__dirname, '../frontend/index.html')); 
+
+ });
+ 
+ app.use(function(req, res) { //put this at end
+     res.status(404);//add this line for setting 404 status
+     res.render('404', {layout: false, title: '404: File Not Found'});
+ });
