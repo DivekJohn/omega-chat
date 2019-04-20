@@ -157,7 +157,7 @@ app.get('/chatroom/:name', (req, res, next) => {
             console.log(err);
             return false;
         }
-        res.json(chatroom.messages);
+        res.json(chatroom.messages ? chatroom.messages : {});
     });
 });
 
