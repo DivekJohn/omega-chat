@@ -1,4 +1,4 @@
-webpackJsonp([0],{
+webpackJsonp(["polyfills"],{
 
 /***/ "./node_modules/core-js/es6/reflect.js":
 /***/ (function(module, exports, __webpack_require__) {

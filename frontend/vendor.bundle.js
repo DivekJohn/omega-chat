@@ -1,4 +1,4 @@
-webpackJsonp([3],{
+webpackJsonp(["vendor"],{
 
 /***/ "./node_modules/@angular/common/@angular/common.es5.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

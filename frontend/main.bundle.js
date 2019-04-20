@@ -1,4 +1,4 @@
-webpackJsonp([1],{
+webpackJsonp(["main"],{
 
 /***/ "./src/$$_gendir lazy recursive":
 /***/ (function(module, exports) {
@@ -168,6 +168,7 @@ var routes = [
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_17__profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_1__Auth_guard__["a" /* AuthGuard */]] },
     { path: 'chat', component: __WEBPACK_IMPORTED_MODULE_18__chat_chat_component__["a" /* ChatComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_1__Auth_guard__["a" /* AuthGuard */]] },
     { path: 'chatroom', component: __WEBPACK_IMPORTED_MODULE_19__chatroom_chatroom_component__["a" /* ChatroomComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_1__Auth_guard__["a" /* AuthGuard */]] },
+    { path: '**', redirectTo: '' }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -374,7 +375,7 @@ module.exports = ".welcome {\n    font-family: lobster;\n}"
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\n    <h1 class=\"\">Divek Chat App</h1>\n    <p class=\"lead\">Welcome to the demo MEAN stack Socket.io Chat App</p>\n    <ng-template #buttons>\n        <a class=\"btn btn-info\" [routerLink]=\"['/login']\">Login</a>\n        <a class=\"btn btn-primary\" [routerLink]=\"['/sign-up']\">Sign-up</a> \n    </ng-template>\n    <div *ngIf=\"userService.loggedIn(); else buttons\" class=\"container\">\n        <h4 class=\"welcome\">Welcome, {{ userService.getLoggedInUser().username }}</h4>\n        <button class=\"btn btn-success\" routerLink=\"/chat\">Start Chatting</button>\n    </div>\n</div>\n"
+module.exports = "<div class=\"jumbotron text-center\">\n    <h1 class=\"\">Sample Chat App</h1>\n    <p class=\"lead\">Welcome to the demo MEAN stack Socket.io Chat App</p>\n    <ng-template #buttons>\n        <a class=\"btn btn-info\" [routerLink]=\"['/login']\">Login</a>\n        <a class=\"btn btn-primary\" [routerLink]=\"['/sign-up']\">Sign-up</a> \n    </ng-template>\n    <div *ngIf=\"userService.loggedIn(); else buttons\" class=\"container\">\n        <h4 class=\"welcome\">Welcome, {{ userService.getLoggedInUser().username }}</h4>\n        <button class=\"btn btn-success\" routerLink=\"/chat\">Start Chatting</button>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -778,7 +779,7 @@ var UserService = (function () {
         return user != null ? true : false;
     };
     UserService.prototype.getLoggedInUser = function () {
-        return JSON.parse(localStorage.getItem('user'));
+        return JSON.parse(localStorage.getItem("user"));
     };
     UserService.prototype.getUsers = function () {
         return this.http.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl + "/api/users");
@@ -883,7 +884,6 @@ WebsocketService = __decorate([
 var environment = {
     production: false,
     apiUrl: 'https://divek.herokuapp.com',
-    debugMode: false
 };
 //# sourceMappingURL=environment.js.map
 
