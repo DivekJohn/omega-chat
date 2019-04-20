@@ -155,7 +155,6 @@ app.get('/chatroom/:name', (req, res, next) => {
             console.log(err);
             return false;
         }
-        console.log(chatroom);
         res.json(chatroom.messages);
     });
 });
@@ -166,6 +165,5 @@ app.get((req, res) => {
  });
  
  app.use((req, res) => { //put this at end
-     res.status(404);//add this line for setting 404 status
-     res.render('404', {error: true, title: '404: File Not Found'});
+     res.status(404).send('404', {error: true, title: '404: File Not Found'});
  });
