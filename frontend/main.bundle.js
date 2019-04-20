@@ -286,7 +286,7 @@ module.exports = "\nh2{\n    font-size: 18px;\n    padding: 10px 20px;\n    colo
 /***/ "./src/app/chatroom/chatroom.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"mario-chat\">\n    <h2>{{ username }}</h2>\n    <span><i *ngIf=\"isTyping\" class=\"isTyping\">typing...</i></span>\n    <div id=\"chat-window\">\n        <div *ngFor=\"let item of messageArray\">\n            <p [class.userMessage] = \"item.user == userService.getLoggedInUser().username\" [class.secUserMessage]=\"item.user != userService.getLoggedInUser().username\">{{ item.message }}</p>                \n        </div>\n        <!-- <div id=\"feedback\"></div> -->\n    </div>\n    <input (keypress)=\"typing()\" [(ngModel)]=\"message\" name=\"message\" type=\"text\" placeholder=\"Message\" />            \n    <button id=\"send\" (click)=\"sendMessage()\">Send</button>    \n</div>"
+module.exports = "<div id=\"mario-chat\">\n    <h2>{{ username }}</h2>\n    <span><i *ngIf=\"isTyping\" class=\"isTyping\">typing...</i></span>\n    <div   #scrollMe id=\"chat-window\" [scrollTop]=\"scrollMe.scrollHeight\">\n        <div *ngFor=\"let item of messageArray\">\n            <p [class.userMessage] = \"item.user == userService.getLoggedInUser().username\" [class.secUserMessage]=\"item.user != userService.getLoggedInUser().username\">{{ item.message }}</p>                \n        </div>\n        <!-- <div id=\"feedback\"></div> -->\n    </div>\n    <input (keypress)=\"typing()\" [(ngModel)]=\"message\" name=\"message\" type=\"text\" placeholder=\"Message\" (keyup.enter)=\"sendMessage()\"/>            \n    <button id=\"send\" (click)=\"sendMessage()\">Send</button>    \n</div>"
 
 /***/ }),
 
